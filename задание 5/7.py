@@ -8,3 +8,5 @@ print ('Решает уравнение вида y^3 + py + q = 0')
 
 p= float (input ('Введите p '))
 q= float (input ('Введите q '))
+y=
+print ('Решение уравнения y= ', y)
