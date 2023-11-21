@@ -5,11 +5,12 @@
 ## sin^2 (x), x > 0,
 ## 0, x = 0,
 ## 1 + 2sin(x^2), x < 0
+import math
 x = int (input('Введите значение переменной x '))
 if x > 0:
-    y = 
+    y = (math.sin(x)) ** 2
 elif x == 0:
     y = 0
 elif x < 0:
-    y = 
+    y = 1 + (math.sin(x ** 2))
 print(y) 
