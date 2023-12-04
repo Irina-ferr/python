@@ -7,7 +7,7 @@
 import numpy as np
 y = np . loadtxt ( ' 11 . txt ')
 print ( y . shape )
-a = np . arange (0 , 5 , 1)
+a = np . arange (0 , n , 1)
 y = y + a
 print ( y )
 print ( y . min ())
