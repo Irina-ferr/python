@@ -5,13 +5,14 @@
 # му элементов по каждой строке массива. Запишите в два отдельных текстовых
 # файла ваши массив-матрицу и массив-вектор.
 import numpy as np
-y = np . loadtxt ( ' 11 . txt ')
+y = np . loadtxt ( ' 11.txt ')
+
 print ( y . shape )
-a = np . arange (0 , n , 1)
+a = np . arange (0 , 5 , 1)
 y = y + a
 print ( y )
 print ( y . min ())
 print ( y . max ())
-print ( y . sum ( axis =1))
-savetxt ( ' Matrix . txt ' , y)
-savetxt ( ' Vector . txt ' , a)
+print ( y . sum ( axis = 1))
+np. savetxt ( ' Matrix.txt ', y)
+np. savetxt ( ' Vector.txt ', a)
