@@ -5,4 +5,5 @@ for i in range (5):
     for t in range (5):
         m [i, t] = i + 1
 print (m)
+np.savetxt ('11.txt', m)
 
