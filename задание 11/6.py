@@ -5,3 +5,4 @@ e_1 = e * (-1)
 t = e / 50
 a = np.arange (e_1, e, t)
 print (a)
+np.savetxt ('6.txt', a)
