@@ -110,15 +110,16 @@ while i <= n:
     a = t
 print (Е) 
 # i) 1!, 3!, 5!, 7!, . . .
-Е = []
+Е = [1]
 e = 1
-Е.append (str(e)+'!')
+t=1
 n = 5
 i = 0
 summ = 0
 while i <= n:
-    summ = e + 2
-    Е.append (str(summ) +'!')
+    summ = e * (t+1)*(t+2)
+    Е.append (summ)
     e = summ
     i = i + 1
+    t+=2
 print (Е) 
