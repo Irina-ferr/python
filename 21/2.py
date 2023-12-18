@@ -11,41 +11,38 @@ import struct
 import numpy as np
 import matplotlib.pyplot as plt
 
-# Пропустить служебную информацию в файле
+
 with open("rat_01_02ml.wdq", "rb") as input_file:
-    input_file.seek(5296)
-
-    # Считать все данные из файла
+    input_file.seek(5296)#служебная
     data = input_file.read()
+decoded_data = struct.unpack('h' * (len(data) // 2), data)#раскодировать из  бинарного
 
-# Раскодировать данные с помощью модуля struct
-decoded_data = struct.unpack('h' * (len(data) // 2), data)
+time = np.linspace(0, len(decoded_data) * 0.00195, len(decoded_data)) #генерация времени
 
-# Генерировать время с помощью функции linspace из модуля numpy
-time = np.linspace(0, len(decoded_data) * 0.00195, len(decoded_data))
+#region разделить на каналы
+channel_1 = decoded_data[::4]
+channel_2 = decoded_data[1::4]
+channel_3 = decoded_data[2::4]
+channel_4 = decoded_data[3::4]
+# endregion
 
-# Разделить данные на 4 канала
-channel1 = decoded_data[::4]
-channel2 = decoded_data[1::4]
-channel3 = decoded_data[2::4]
-channel4 = decoded_data[3::4]
-
-# Построить графики для всех каналов
+#region графики
 plt.subplot(4, 1, 1)
-plt.plot(time, channel1)
+plt.plot(time, channel_1)
 plt.title("Channel 1")
 
 plt.subplot(4, 1, 2)
-plt.plot(time, channel2)
+plt.plot(time, channel_2)
 plt.title("Channel 2")
 
 plt.subplot(4, 1, 3)
-plt.plot(time, channel3)
+plt.plot(time, channel_3)
 plt.title("Channel 3")
 
 plt.subplot(4, 1, 4)
-plt.plot(time, channel4)
+plt.plot(time, channel_4)
 plt.title("Channel 4")
 
+#endregion
 plt.tight_layout()
 plt.show()

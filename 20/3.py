@@ -6,13 +6,12 @@
 num_students = int(input("Введите количество учеников в группе: "))
 
 file = open("Зачёт.txt", "w")
-file.write('last_name \t name \t middle_name \t grade \n')  
 for i in range(num_students):
-    last_name = input("Введите фамилию ученика: ")
-    first_name = input("Введите имя ученика: ")
-    middle_name = input("Введите отчество ученика: ")
-    grade = input("Введите оценку ученика: ")
+    familia = input("Введите фамилию ученика: ")
+    imya = input("Введите имя ученика: ")
+    otchestvo = input("Введите отчество ученика: ")
+    otsenka = input("Введите оценку ученика: ")
 
-    file.write(f'{last_name} \t {first_name} \t {middle_name} \t {grade} \n')
+    file.write(f'{familia} \t {imya} \t {otchestvo} \t {otsenka} \n')
 
 file.close()

@@ -1,10 +1,21 @@
-import struct
+# Файл Rat.wdq содержит бинарное представление записи с 4 отведений внутричерепной ЭЭГ крыс. 
+# Отведения записаны последовательно. Числа знаковые двухбайтные. Создайте программу, выводящую информацию из одного
+# из отведений с заданным номером в отдельный текстовый (.txt) файл. Запишите первые 100 измерений. Название текстового файла составьте из
+# названия исходного файла без расширения ’.wdq’, номера отведения и расширения ’.txt’.
+from struct import unpack
+import os.path
 
-electrode_number = input("Введите номер отведения: ")
-output_file_name = "Rat_" + electrode_number + ".txt"
+NumberChannel = int(input('Номер отведения: '))
+length = 100  # количество измерений
+Rat = 'Rat.wdq'
 
-with open("Rat.wdq", "rb") as input_file, open(output_file_name, "w") as output_file:
-    for _ in range(100):
-        data = input_file.read(2)
-        electrode_data = struct.unpack('h', data)[0]
-        output_file.write(str(electrode_data) + "\n")
+with open(Rat, 'rb') as fr:
+    fr.seek(NumberChannel * length * 2)  # переходим к началу нужного отведения
+    buffer = fr.read(length * 2)  # читаем данные отведения
+
+mylist = unpack(length * 'h', buffer)  # h - формат для двухбайтных знаковых чисел
+
+file_name = os.path.splitext(Rat)[0] + str(NumberChannel) + '.txt'
+with open(file_name, 'w') as fw:
+    for i in range(len(mylist)):
+        fw.write(str(mylist[i]) + '\n')
